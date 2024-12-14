@@ -7,7 +7,8 @@ let form = document.querySelector("form");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  let username = document.getElementById("username").value.trim();
+  let users = JSON.parse(localStorage.getItem("users"));
+
   let password = document.getElementById("password").value.trim();
   let email = document.getElementById("email").value.trim();
 
@@ -17,9 +18,9 @@ form.addEventListener("submit", function (event) {
 
   if (existingUser) {
     localStorage.setItem("currentUser", JSON.stringify(existingUser));
-    alert("Login successfully");
+    alert("Đăng nhập thành công");
     location.href = "./index.html";
   } else {
-    alert("Email or password is not correct");
+    alert("Tài khoản mật khẩu không chính xác");
   }
 });
